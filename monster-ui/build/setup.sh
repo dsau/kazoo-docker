@@ -1,13 +1,12 @@
 #!/bin/sh
-rm -rf $WWW/html
-mkdir -p $WWW/html
-cd $WWW
-git clone --depth 1 --no-single-branch $REPO html
 
-echo "Setup public apps"
-cd $WWW/html/apps
+mkdir -p /usr/src && cd /usr/src 
+git clone --depth 1 --no-single-branch $REPO monster-ui
+cd monster-ui
+npm install
 
+cd /usr/src
 for app in accounts callflows numbers pbxs voip webhooks
 do
-	git clone --depth 1 --no-single-branch https://github.com/2600hz/monster-ui-$app $app
+	git clone --depth 1 --no-single-branch https://github.com/2600hz/monster-ui-$app
 done
